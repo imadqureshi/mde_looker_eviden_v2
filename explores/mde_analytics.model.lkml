@@ -1,6 +1,7 @@
 connection: "@{looker_connection}"
 
-include: "/views/*.view.lkml"                # include all views in the views/ folder in this project
+include: "/views/*.view.lkml"
+include: "/dashboards/*.dashboard"
 explore: tags {}
 explore: oee {
   label: "MDE Data"
