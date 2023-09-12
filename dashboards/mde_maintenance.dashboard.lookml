@@ -1,4 +1,5 @@
 - dashboard: mde_maintenance
+  refresh: 15 seconds
   title: MDE - Maintenance Dashboard
   layout: newspaper
   preferred_viewer: dashboards-next
