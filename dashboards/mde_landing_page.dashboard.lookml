@@ -133,7 +133,7 @@
     height: 2
   - type: button
     name: button_oee_assembly
-    rich_content_json: '{"text":"Navigate to OEE Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://mavenwave.looker.com/dashboards/mde::mde_oee?Site=Chicago&Line=Line+1&Asset=Assembly+Robot+001"}'
+    rich_content_json: '{"text":"Navigate to OEE Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"/dashboards/mde_analytics::mde_oee?Site=Chicago&Line=Line+1&Asset=Assembly+Robot+001"}'
     row: 14
     col: 4
     width: 5
@@ -790,7 +790,7 @@
     height: 5
   - type: button
     name: button_oee_inspection
-    rich_content_json: '{"text":"Navigate to OEE Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://mavenwave.looker.com/dashboards/mde::mde_oee?Site=Chicago&Line=Line+2&Asset=Inspection+Robot+001"}'
+    rich_content_json: '{"text":"Navigate to OEE Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"/dashboards/mde_analytics::mde_oee?Site=Chicago&Line=Line+2&Asset=Inspection+Robot+001"}'
     row: 30
     col: 4
     width: 5
@@ -864,35 +864,35 @@
     height: 5
   - type: button
     name: button_oee_material_handling
-    rich_content_json: '{"text":"Navigate to OEE Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://mavenwave.looker.com/dashboards/mde::mde_oee?Site=Chicago&Line=Line+2&Asset=Material+Handling+Robot+001"}'
+    rich_content_json: '{"text":"Navigate to OEE Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"/dashboards/mde_analytics::mde_oee?Site=Chicago&Line=Line+2&Asset=Material+Handling+Robot+001"}'
     row: 22
     col: 4
     width: 5
     height: 1
   - type: button
     name: button_oee_mini_mill
-    rich_content_json: '{"text":"Navigate to OEE Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://mavenwave.looker.com/dashboards/mde::mde_oee?Site=Chicago&Line=Work+Cell+1&Asset=HAAS+Mini+Mill+001"}'
+    rich_content_json: '{"text":"Navigate to OEE Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"/dashboards/mde_analytics::mde_oee?Site=Chicago&Line=Work+Cell+1&Asset=HAAS+Mini+Mill+001"}'
     row: 38
     col: 4
     width: 5
     height: 1
   - type: button
     name: button_oee_cnc
-    rich_content_json: '{"text":"Navigate to OEE Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://mavenwave.looker.com/dashboards/mde::mde_oee?Site=Chicago&Line=Work+Cell+1&Asset=HAAS+5-Axis+CNC+001"}'
+    rich_content_json: '{"text":"Navigate to OEE Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"/dashboards/mde_analytics::mde_oee?Site=Chicago&Line=Work+Cell+1&Asset=HAAS+5-Axis+CNC+001"}'
     row: 46
     col: 4
     width: 5
     height: 1
   - type: button
     name: button_process_assembly
-    rich_content_json: '{"text":"Navigate to Process Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://mavenwave.looker.com/dashboards/mde::mde_process?Site=Chicago&Line=Line+1&Asset=Assembly+Robot+001"}'
+    rich_content_json: '{"text":"Navigate to Process Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"/dashboards/mde_analytics::mde_process?Site=Chicago&Line=Line+1&Asset=Assembly+Robot+001"}'
     row: 14
     col: 9
     width: 5
     height: 1
   - type: button
     name: button_outlier_inspection
-    rich_content_json: '{"text":"Navigate to Outlier Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://mavenwave.looker.com/dashboards/mde::mde_outlier?Site=Chicago&Line=Line+2&Asset=Inspection+Robot+001"}'
+    rich_content_json: '{"text":"Navigate to Outlier Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"/dashboards/mde_analytics::mde_outlier?Site=Chicago&Line=Line+2&Asset=Inspection+Robot+001"}'
     row: 30
     col: 14
     width: 5
@@ -1004,35 +1004,35 @@
     height: 5
   - type: button
     name: button_process_cnc
-    rich_content_json: '{"text":"Navigate to Process Dashboard ","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://mavenwave.looker.com/dashboards/mde::mde_process?Site=Chicago&Line=Work+Cell+1&Asset=HAAS+5-Axis+CNC+001"}'
+    rich_content_json: '{"text":"Navigate to Process Dashboard ","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"/dashboards/mde_analytics::mde_process?Site=Chicago&Line=Work+Cell+1&Asset=HAAS+5-Axis+CNC+001"}'
     row: 46
     col: 9
     width: 5
     height: 1
   - type: button
     name: button_process_mills
-    rich_content_json: '{"text":"Navigate to Process Dashboard ","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://mavenwave.looker.com/dashboards/mde::mde_process?Site=Chicago&Line=Work+Cell+1&Asset=HAAS+Mini+Mill+001"}'
+    rich_content_json: '{"text":"Navigate to Process Dashboard ","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"/dashboards/mde_analytics::mde_process?Site=Chicago&Line=Work+Cell+1&Asset=HAAS+Mini+Mill+001"}'
     row: 38
     col: 9
     width: 5
     height: 1
   - type: button
     name: button_process_inspection
-    rich_content_json: '{"text":"Navigate to Process Dashboard ","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://mavenwave.looker.com/dashboards/mde::mde_process?Site=Chicago&Line=Line+2&Asset=Inspection+Robot+001"}'
+    rich_content_json: '{"text":"Navigate to Process Dashboard ","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"/dashboards/mde_analytics::mde_process?Site=Chicago&Line=Line+2&Asset=Inspection+Robot+001"}'
     row: 30
     col: 9
     width: 5
     height: 1
   - type: button
     name: button_maintenance_assembly
-    rich_content_json: '{"text":"Navigate to Maintenance Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://mavenwave.looker.com/dashboards/mde::mde_maintenance?Site=Chicago&Line=Line+1&Asset=Assembly+Robot+001"}'
+    rich_content_json: '{"text":"Navigate to Maintenance Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"/dashboards/mde_analytics::mde_maintenance?Site=Chicago&Line=Line+1&Asset=Assembly+Robot+001"}'
     row: 14
     col: 14
     width: 10
     height: 1
   - type: button
     name: button_maintenance_inspection
-    rich_content_json: '{"text":"Navigate to Maintenance Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://mavenwave.looker.com/dashboards/mde::mde_maintenance?Site=Chicago&Line=Line+2&Asset=Inspection+Robot+001"}'
+    rich_content_json: '{"text":"Navigate to Maintenance Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"/dashboards/mde_analytics::mde_maintenance?Site=Chicago&Line=Line+2&Asset=Inspection+Robot+001"}'
     row: 30
     col: 19
     width: 5
@@ -1111,28 +1111,28 @@
     height: 5
   - type: button
     name: button_maintenance_material_handling
-    rich_content_json: '{"text":"Navigate to Maintenance Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://mavenwave.looker.com/dashboards/mde::mde_maintenance?Site=Chicago&Line=Line+2&Asset=Material+Handling+Robot+001"}'
+    rich_content_json: '{"text":"Navigate to Maintenance Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"/dashboards/mde_analytics::mde_maintenance?Site=Chicago&Line=Line+2&Asset=Material+Handling+Robot+001"}'
     row: 22
     col: 14
     width: 10
     height: 1
   - type: button
     name: button_maintenance_mills
-    rich_content_json: '{"text":"Navigate to Maintenance Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://mavenwave.looker.com/dashboards/mde::mde_maintenance?Site=Chicago&Line=Work+Cell+1&Asset=HAAS+Mini+Mill+001"}'
+    rich_content_json: '{"text":"Navigate to Maintenance Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"/dashboards/mde_analytics::mde_maintenance?Site=Chicago&Line=Work+Cell+1&Asset=HAAS+Mini+Mill+001"}'
     row: 38
     col: 14
     width: 10
     height: 1
   - type: button
     name: button_maintenance_cnc
-    rich_content_json: '{"text":"Navigate to Maintenance Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://mavenwave.looker.com/dashboards/mde::mde_maintenance?Site=Chicago&Line=Work+Cell+1&Asset=HAAS+5-Axis+CNC+001"}'
+    rich_content_json: '{"text":"Navigate to Maintenance Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"/dashboards/mde_analytics::mde_maintenance?Site=Chicago&Line=Work+Cell+1&Asset=HAAS+5-Axis+CNC+001"}'
     row: 46
     col: 14
     width: 10
     height: 1
   - type: button
     name: button_process_material_handling
-    rich_content_json: '{"text":"Navigate to Process Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://mavenwave.looker.com/dashboards/mde::mde_process?Site=Chicago&Line=Line+2&Asset=Material+Handling+Robot+001"}'
+    rich_content_json: '{"text":"Navigate to Process Dashboard","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"/dashboards/mde_analytics::mde_process?Site=Chicago&Line=Line+2&Asset=Material+Handling+Robot+001"}'
     row: 22
     col: 9
     width: 5

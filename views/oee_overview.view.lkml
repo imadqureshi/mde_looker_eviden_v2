@@ -284,7 +284,7 @@ where row_nums.row_num=1 ;;
     <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "," |slice: 0}}</td>
     </tr>
     <tr>
-    <td><img src = "https://storage.cloud.google.com/mde-factory-future-looker-bucket/landing_page_robot_arm.png" style="height:200px; width:250px"  ></td>
+    <td><img src = "https://storage.cloud.google.com/@{bucket_name}/@{assembly_robot_img_name}" style="height:200px; width:250px"  ></td>
     </tr>
     </table>
     ;;
@@ -298,7 +298,7 @@ where row_nums.row_num=1 ;;
     <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "," |slice: 0}}</td>
     </tr>
     <tr>
-    <td><img src = "https://storage.cloud.google.com/mde-factory-future-looker-bucket/landing_page_robot_arm.png" style="height:200px; width:250px"  ></td>
+    <td><img src = "https://storage.cloud.google.com/@{bucket_name}/@{material_handling_robot_img_name}" style="height:200px; width:250px"  ></td>
     </tr>
     </table>
     ;;
@@ -306,12 +306,12 @@ where row_nums.row_num=1 ;;
   dimension: tbl_img_plant {
     sql:"Factory Floor" ;;
     html:
-     <table style="width:100%; ">
-     <tr style="margin-top: 0; padding-top:0;line-height: 20px;height: 20px">
+    <table style="width:100%; ">
+    <tr style="margin-top: 0; padding-top:0;line-height: 20px;height: 20px">
     <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "," |slice: 0}}</td>
     </tr>
     <tr>
-    <td><img src = "https://storage.cloud.google.com/mde-factory-future-looker-bucket/landing_page_factory_floor.png" style="height:200px; width:250px"  ></td>
+    <td><img src = "https://storage.cloud.google.com/@{bucket_name}/@{factory_floor_img_name}" style="height:200px; width:250px"  ></td>
     </tr>
     </table>
     ;;
@@ -324,7 +324,7 @@ where row_nums.row_num=1 ;;
     <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "," |slice: 0}}</td>
     </tr>
     <tr>
-    <td><img src = "https://storage.cloud.google.com/mde-factory-future-looker-bucket/landing_page_mini_mill.png" style="height:200px; width:250px"  ></td>
+    <td><img src = "https://storage.cloud.google.com/@{bucket_name}/@{mini_mill_img_name}" style="height:200px; width:250px"  ></td>
     </tr>
     </table>
     ;;
@@ -337,7 +337,7 @@ where row_nums.row_num=1 ;;
     <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "," |slice: 0}}</td>
     </tr>
     <tr>
-    <td><img src = "https://storage.cloud.google.com/mde-factory-future-looker-bucket/landing_page_inspection_robot.png" style="height:200px; width:250px"  ></td>
+    <td><img src = "https://storage.cloud.google.com/@{bucket_name}/@{visual_inspection_robot_img_name}" style="height:200px; width:250px"  ></td>
     </tr>
     </table>
     ;;
@@ -350,7 +350,7 @@ where row_nums.row_num=1 ;;
     <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "," |slice: 0}}</td>
     </tr>
     <tr>
-    <td><img src = "https://storage.cloud.google.com/mde-factory-future-looker-bucket/landing_page_5axes_cnc.png" style="height:200px; width:250px"  ></td>
+    <td><img src = "https://storage.cloud.google.com/@{bucket_name}/@{cnc_img_name}" style="height:200px; width:250px"  ></td>
     </tr>
     </table>
     ;;
