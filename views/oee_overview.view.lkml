@@ -21,7 +21,7 @@ CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.maxRuntimeBeforeMaintenance') AS 
 CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.percentOfMax') AS NUMERIC) AS percentOfMax,
 CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.runtimeSinceLastMaintenance') AS NUMERIC) AS runtimeSinceLastMaintenance,
 CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.secondsUntilNextMaintenance') AS NUMERIC) AS secondsUntilNextMaintenance,
-FROM `mde-factory-of-future.mde_data.default-numeric-records` WHERE TIMESTAMP_TRUNC(event_timestamp, DAY) = TIMESTAMP("2023-08-24")
+FROM `mde-factory-of-future.mde_data.default-numeric-records` WHERE TIMESTAMP_TRUNC(event_timestamp, DAY) > TIMESTAMP("2023-08-24")
 AND tag_name IN ("OEE", "Uptime", "TotalPartsMade", "DesignedCycleTime", "Performance", "TotalTime" ,"BadPartsMade", "Availability", "Quality", "CycleTime_Base", "State", "MaintenanceData")
 ORDER BY tag_name, event_timestamp),
 row_nums as (
@@ -188,7 +188,7 @@ where row_nums.row_num=1 ;;
     value_format_name: decimal_1
   }
   measure: total_parts_made {
-    type: average
+    type: max
     sql: ${TABLE}.value ;;
     filters: [tag_name: "TotalPartsMade"]
     value_format_name: decimal_0

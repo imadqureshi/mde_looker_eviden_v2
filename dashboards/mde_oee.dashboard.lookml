@@ -1,5 +1,5 @@
 - dashboard: mde_oee
-  refresh: 15 seconds
+  --refresh: 5 seconds
   title: MDE - OEE Dashboard
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -342,7 +342,7 @@
     height: 5
   - title: Total Parts Made KPI tile
     name: Total Parts Made KPI tile
-    model: mde
+    model: mde_analytics
     explore: oee_overview
     type: single_value
     fields: [oee_overview.total_parts_made]
@@ -398,7 +398,7 @@
     height: 4
   - title: Uptime KPI Tile
     name: Uptime KPI Tile
-    model: mde
+    model: mde_analytics
     explore: oee_overview
     type: single_value
     fields: [oee_overview.uptime]
@@ -455,7 +455,7 @@
     height: 4
   - title: Bad Parts Made KPI tile
     name: Bad Parts Made KPI tile
-    model: mde
+    model: mde_analytics
     explore: oee_overview
     type: single_value
     fields: [oee_overview.bad_parts_made]

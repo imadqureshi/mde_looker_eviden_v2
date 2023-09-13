@@ -1,5 +1,5 @@
 - dashboard: mde_outlier
-  refresh: 15 seconds
+  --refresh: 15 seconds
   title: MDE - Outlier Dashboard
   layout: newspaper
   preferred_viewer: dashboards-next

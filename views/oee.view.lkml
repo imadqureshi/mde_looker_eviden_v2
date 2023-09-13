@@ -208,7 +208,6 @@ view: oee {
   }
   measure: state_value {
     type: min
-    sql: ${TABLE}.value ;;
     filters: [tag_name: "State"]
     value_format_name: decimal_0
   }

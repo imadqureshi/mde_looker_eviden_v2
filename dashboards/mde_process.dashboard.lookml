@@ -1,5 +1,5 @@
 - dashboard: mde_process
-  refresh: 15 seconds
+  --refresh: 15 seconds
   title: MDE - Process Dashboard
   layout: newspaper
   preferred_viewer: dashboards-next

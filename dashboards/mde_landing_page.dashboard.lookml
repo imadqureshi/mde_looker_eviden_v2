@@ -1,5 +1,5 @@
 - dashboard: mde_landing_page
-  refresh: 15 seconds
+  --refresh: 15 seconds
   title: Factory of the Future - Landing Page
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -1040,7 +1040,7 @@
     height: 1
   - title: Maintenance
     name: Maintenance
-    model: mde
+    model: mde_analytics
     explore: oee_overview
     type: marketplace_viz_multiple_value::multiple_value-marketplace
     fields: [oee_overview.assets_up_for_maintenance]
@@ -1410,7 +1410,7 @@
     height: 5
   - title: Maintenance
     name: Maintenance (2)
-    model: mde
+    model: mde_analytics
     explore: oee_overview
     type: marketplace_viz_multiple_value::multiple_value-marketplace
     fields: [oee_overview.assets_up_for_maintenance]
