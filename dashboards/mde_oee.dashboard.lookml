@@ -513,7 +513,7 @@
   - title: Machine State KPI tile
     name: Machine State KPI tile
     model: mde_analytics
-    explore: oee_overview
+    explore: oee
     type: single_value
     fields: [oee_overview.state]
     limit: 500
