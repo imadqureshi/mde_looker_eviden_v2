@@ -25,7 +25,7 @@ FROM `mde-factory-of-future.mde_data.default-numeric-records` WHERE TIMESTAMP_TR
 AND tag_name IN ("OEE", "Uptime", "TotalPartsMade", "DesignedCycleTime", "Performance", "TotalTime" ,"BadPartsMade", "Availability", "Quality", "CycleTime_Base", "State", "MaintenanceData")
 ORDER BY tag_name, event_timestamp),
 row_nums as (
-SELECT *,  ROW_NUMBER() OVER (PARTITION BY base.deviceID, tag_name ORDER BY event_timestamp DESC) as row_num,
+SELECT *,  ROW_NUMBER() OVER (PARTITION BY base.asset, tag_name ORDER BY event_timestamp DESC) as row_num,
 if (base.percentOfMax >85, 1, 0) as asset_up_for_maintenance
 FROM base
 )
@@ -132,9 +132,13 @@ where row_nums.row_num=1 ;;
   }
   measure: oee_calc {
     label: "OEE"
-    type: number
-    sql: ${performance_calc} * ${availability_calc} * ${quality_calc} ;;
+    type: average
+    sql: ${TABLE}.value/100 ;;
+    filters: [tag_name: "OEE"]
     value_format_name: percent_1
+    # type: number
+    # sql: ${performance_calc} * ${availability_calc} * ${quality_calc} ;;
+    # value_format_name: percent_1
   }
   measure: oee_calc_kpi {
     sql: ${oee_calc} ;;
@@ -163,23 +167,35 @@ where row_nums.row_num=1 ;;
   }
   measure: performance_calc {
     label: "Performance"
-    type: number
-    sql: ${designed_cycle_time}*${total_parts_made}/${uptime} ;;
+    type: average
+    sql: ${TABLE}.value/100 ;;
+    filters: [tag_name: "Performance"]
     value_format_name: percent_1
+    #Updating to tag_name reference, not using calc anymore - 09/13/23
   }
 
   measure: availability_calc {
     label: "Availability"
-    type: number
-    sql: ${uptime}/${total_time} ;;
+    type: average
+    sql: ${TABLE}.value/100 ;;
+    filters: [tag_name: "Availability"]
     value_format_name: percent_1
+    # type: number
+    # sql: ${uptime}/${total_time} ;;
+    # value_format_name: percent_1
+    #Updating to tag_name reference, not using calc anymore - 09/13/23
   }
 
   measure: quality_calc {
     label: "Quality"
-    type: number
-    sql: (${total_parts_made}-${bad_parts_made})/${total_parts_made} ;;
+    type: average
+    sql: ${TABLE}.value/100 ;;
+    filters: [tag_name: "Quality"]
     value_format_name: percent_1
+    #Updating to tag_name reference, not using calc anymore - 09/13/23
+    # type: number
+    # sql: (${total_parts_made}-${bad_parts_made})/${total_parts_made} ;;
+    # value_format_name: percent_1
   }
   measure: designed_cycle_time {
     type: average

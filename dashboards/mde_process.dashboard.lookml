@@ -1,5 +1,6 @@
 - dashboard: mde_process
-  --refresh: 15 seconds
+  refresh: 10 seconds
+  #All metrics have a NOT NULL filter to avoid ups and downs when there is no data sent at a particular second
   title: MDE - Process Dashboard
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -14,6 +15,7 @@
     fields: [oee.current, oee.event_timestamp_time]
     filters:
       oee.minutes_max_timestamp_diff: "<=5"
+      oee.current: NOT NULL
     sorts: [oee.event_timestamp_time]
     limit: 500
     column_limit: 50
@@ -79,6 +81,7 @@
     fields: [oee.pressure, oee.event_timestamp_time]
     filters:
       oee.minutes_max_timestamp_diff: "<=5"
+      oee.pressure: NOT NULL
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -139,12 +142,13 @@
   - title: Speed for last 5 minutes
     name: Speed for last 5 minutes
     model: mde_analytics
+
     explore: oee
     type: looker_line
     fields: [oee.speed, oee.event_timestamp_second]
-    fill_fields: [oee.event_timestamp_second]
     filters:
       oee.minutes_max_timestamp_diff: "<=5"
+      oee.speed: NOT NULL
     sorts: [oee.event_timestamp_second]
     limit: 500
     column_limit: 50
@@ -173,8 +177,10 @@
     show_null_points: true
     interpolation: linear
     y_axes: [{label: '', orientation: left, series: [{axisId: oee.speed, id: oee.speed,
-            name: Speed}], showLabels: true, showValues: true, maxValue: 110, minValue: !!null '',
-        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
+      name: Speed, __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml,
+      __LINE_NUM: 179}], showLabels: true, showValues: true, maxValue: 110, minValue: !!null '',
+    unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear,
+    __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml, __LINE_NUM: 179}]
     x_axis_zoom: true
     y_axis_zoom: true
     limit_displayed_rows_values:
@@ -183,11 +189,12 @@
       num_rows: ''
     hidden_series: []
     reference_lines: [{reference_type: line, range_start: max, range_end: min, margin_top: deviation,
-        margin_value: mean, margin_bottom: deviation, label_position: right, color: "#FC2E31",
-        line_value: '105', label: Max speed range}, {reference_type: line, range_start: max,
-        range_end: min, margin_top: deviation, margin_value: mean, margin_bottom: deviation,
-        label_position: right, color: "#FC9200", line_value: '95', label: Min speed
-          range}]
+      margin_value: mean, margin_bottom: deviation, label_position: right, color: "#FC2E31",
+      line_value: '105', label: Max speed range, __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml,
+      __LINE_NUM: 189}, {reference_type: line, range_start: max, range_end: min, margin_top: deviation,
+      margin_value: mean, margin_bottom: deviation, label_position: right, color: "#FC9200",
+      line_value: '95', label: Min speed range, __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml,
+      __LINE_NUM: 191}]
     ordering: none
     show_null_labels: false
     show_totals_labels: false
@@ -211,6 +218,7 @@
     fields: [oee.voltage, oee.event_timestamp_time]
     filters:
       oee.minutes_max_timestamp_diff: "<=5"
+      oee.voltage: NOT NULL
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -271,13 +279,14 @@
   - title: Temperature for last 5 minutes
     name: Temperature for last 5 minutes
     model: mde_analytics
+
     explore: oee
     type: looker_line
-    fields: [oee.temperature, oee.event_timestamp_second, min_of_seconds_max_timestamp_diff]
-    fill_fields: [oee.event_timestamp_second]
+    fields: [oee.temperature, oee.event_timestamp_second]
     filters:
       oee.minutes_max_timestamp_diff: "<=5"
-    sorts: [oee.min_of_seconds_max_timestamp_diff]
+      oee.temperature: NOT NULL
+    sorts: [oee.event_timestamp_second desc]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -305,11 +314,15 @@
     show_null_points: true
     interpolation: linear
     y_axes: [{label: '', orientation: left, series: [{axisId: oee.current, id: oee.current,
-            name: Current}, {axisId: oee.pressure, id: oee.pressure, name: Pressure},
-          {axisId: oee.speed, id: oee.speed, name: Speed}, {axisId: oee.temperature,
-            id: oee.temperature, name: Temperature}], showLabels: true, showValues: true,
-        minValue: !!null '', unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
-        type: linear}]
+      name: Current, __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml,
+      __LINE_NUM: 313}, {axisId: oee.pressure, id: oee.pressure, name: Pressure,
+      __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml, __LINE_NUM: 314},
+      {axisId: oee.speed, id: oee.speed, name: Speed, __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml,
+      __LINE_NUM: 315}, {axisId: oee.temperature, id: oee.temperature, name: Temperature,
+      __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml, __LINE_NUM: 315}],
+    showLabels: true, showValues: true, minValue: !!null '', unpinAxis: false, tickDensity: default,
+    tickDensityCustom: 5, type: linear, __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml,
+    __LINE_NUM: 313}]
     x_axis_zoom: true
     y_axis_zoom: true
     limit_displayed_rows_values:
@@ -318,11 +331,12 @@
       num_rows: ''
     hidden_series: []
     reference_lines: [{reference_type: line, range_start: max, range_end: min, margin_top: deviation,
-        margin_value: mean, margin_bottom: deviation, label_position: right, color: "#FC2E31",
-        line_value: '20', label: Max temperature range}, {reference_type: line, range_start: max,
-        range_end: min, margin_top: deviation, margin_value: mean, margin_bottom: deviation,
-        label_position: right, color: "#FC9200", line_value: '15', label: Min temperature
-          range}]
+      margin_value: mean, margin_bottom: deviation, label_position: right, color: "#FC2E31",
+      line_value: '20', label: Max temperature range, __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml,
+      __LINE_NUM: 326}, {reference_type: line, range_start: max, range_end: min, margin_top: deviation,
+      margin_value: mean, margin_bottom: deviation, label_position: right, color: "#FC9200",
+      line_value: '15', label: Min temperature range, __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml,
+      __LINE_NUM: 328}]
     ordering: none
     show_null_labels: false
     show_totals_labels: false
@@ -330,10 +344,6 @@
     totals_color: "#808080"
     defaults_version: 1
     hidden_pivots: {}
-    listen:
-      Asset: oee.asset
-      Line: oee.line
-      Site: oee.site
     row: 24
     col: 0
     width: 12
@@ -347,6 +357,7 @@
     filters:
       oee.hours_max_timestamp_diff: "<=24"
       oee.shift_of_day: "-NULL"
+      oee.current: NOT NULL
     sorts: [oee.shift_of_day]
     limit: 500
     column_limit: 50
@@ -447,6 +458,7 @@
     filters:
       oee.hours_max_timestamp_diff: "<=24"
       oee.shift_of_day: "-NULL"
+      oee.pressure: NOT NULL
     sorts: [oee.shift_of_day]
     limit: 500
     column_limit: 50
@@ -514,6 +526,7 @@
     filters:
       oee.hours_max_timestamp_diff: "<=24"
       oee.shift: "-NULL"
+      oee.temperature: NOT NULL
     sorts: [oee.shift_of_day]
     limit: 500
     column_limit: 50
@@ -584,6 +597,7 @@
     filters:
       oee.hours_max_timestamp_diff: "<=24"
       oee.shift: "-NULL"
+      oee.speed: NOT NULL
     sorts: [oee.shift_of_day]
     limit: 500
     column_limit: 50
@@ -651,6 +665,7 @@
     filters:
       oee.hours_max_timestamp_diff: "<=24"
       oee.shift: "-NULL"
+      oee.voltage: NOT NULL
     sorts: [oee.shift_of_day]
     limit: 500
     column_limit: 50

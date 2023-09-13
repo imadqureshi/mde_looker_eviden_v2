@@ -178,16 +178,23 @@ view: oee {
     filters: [tag_name: "DesignedCycleTime"]
     value_format_name: decimal_1
   }
-  measure: total_parts_made {
-    type: average
-    sql: ${TABLE}.value ;;
-    filters: [tag_name: "TotalPartsMade"]
+  measure: cycle_time_per_part {
+    type: number
+    sql: ${uptime}*3600/${total_parts_made}  ;;
     value_format_name: decimal_1
   }
-  measure: uptime {
-    type: average
+  measure: total_parts_made {
+    type: max
     sql: ${TABLE}.value ;;
+    filters: [tag_name: "TotalPartsMade"]
+    value_format_name: decimal_0
+  }
+  measure: uptime {
+    type: max
+    sql: ${TABLE}.value /3600;;
     filters: [tag_name: "Uptime"]
+    # html: {% assign h= value | divided_by: 3600 %}
+    # {{h | round:1}};;
     value_format_name: decimal_1
   }
   measure: total_time {
@@ -197,10 +204,10 @@ view: oee {
     value_format_name: decimal_1
   }
   measure: bad_parts_made {
-    type: average
+    type: max
     sql: ${TABLE}.value ;;
     filters: [tag_name: "BadPartsMade"]
-    value_format_name: decimal_1
+    value_format_name: decimal_0
   }
   measure: lowerLimit {
     type: average
