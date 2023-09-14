@@ -15,15 +15,15 @@ view: oee {
       JSON_EXTRACT_SCALAR(embedded_metadata, '$.metadata.name') AS name ,
       JSON_EXTRACT_SCALAR(JSON_EXTRACT(embedded_metadata, '$.metadata'), '$.asset') AS asset ,
       JSON_EXTRACT_SCALAR(JSON_EXTRACT(embedded_metadata, '$.metadata'), '$.site') AS site ,
-      JSON_EXTRACT_SCALAR(JSON_EXTRACT(embedded_metadata, '$.metadata'), '$.shift') AS shift,
-      CONCAT(EXTRACT (DATE FROM event_timestamp)," Shift ",JSON_EXTRACT_SCALAR(JSON_EXTRACT(embedded_metadata, '$.metadata'), '$.shift'))  as shift_of_day,
+      LEFT(JSON_EXTRACT_SCALAR(JSON_EXTRACT(embedded_metadata, '$.metadata'), '$.shift'),1) AS shift,
+      CONCAT(EXTRACT (DATE FROM event_timestamp)," Shift ",LEFT(JSON_EXTRACT_SCALAR(JSON_EXTRACT(embedded_metadata, '$.metadata'), '$.shift'),1))  as shift_of_day,
       JSON_EXTRACT_SCALAR(embedded_metadata, '$.anomaly') as anomaly,
       JSON_EXTRACT_SCALAR(embedded_metadata, '$.movingAverage') as partsSize,
       CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.maxRuntimeBeforeMaintenance') AS NUMERIC) AS maxRuntimeBeforeMaintenance,
       CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.percentOfMax') AS NUMERIC) AS percentOfMax,
       CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.runtimeSinceLastMaintenance') AS NUMERIC) AS runtimeSinceLastMaintenance,
       CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.secondsUntilNextMaintenance') AS NUMERIC) AS secondsUntilNextMaintenance,
-      FROM `mde-factory-of-future.mde_data.default-numeric-records` WHERE TIMESTAMP_TRUNC(event_timestamp, DAY) > TIMESTAMP("2023-08-20")
+      FROM `mde-factory-of-future.mde_data.default-numeric-records` WHERE TIMESTAMP_TRUNC(event_timestamp, DAY) > TIMESTAMP("2023-09-11")
       -- TIMESTAMP_TRUNC(event_timestamp, DAY) in (select distinct TIMESTAMP_TRUNC(event_timestamp, DAY) as top3days from base order by top3days desc limit 3)
       ORDER BY tag_name, event_timestamp ;;
   }
@@ -54,8 +54,8 @@ view: oee {
   }
   dimension: shift_of_day_unformatted {
     type: string
-    sql:CONCAT(${event_timestamp_date}, shift)  ;;
-    hidden: yes
+    sql:CONCAT(${event_timestamp_date}, ${shift})  ;;
+    hidden: no
   }
   dimension: latest_shift_check {
     type: yesno
@@ -101,6 +101,7 @@ view: oee {
   }
   dimension:  shift{
     type: string
+    sql:${TABLE}.shift ;; #Getting just first char to avoid 1.0 issue, happens intermittently - 09/14
   }
   dimension:  site{
     type: string
@@ -311,12 +312,12 @@ view: oee {
   }
   measure: current_warnings_latest_shift {
     type: count
-    filters: [tag_name:"Current", value: ">10.5 OR <9.5", latest_shift_check: "yes"]
+    filters: [tag_name:"Current", value: ">11 OR <9", latest_shift_check: "yes"]
   }
 
   measure: current_warnings_last_5_mins {
     type: count
-    filters: [tag_name:"Current", value: ">10.5 OR <9.5", minutes_max_timestamp_diff: "<=5"]
+    filters: [tag_name:"Current", value: ">11 OR <9", minutes_max_timestamp_diff: "<=5"]
   }
   measure: voltage_warnings_latest_shift {
     type: count
@@ -324,27 +325,27 @@ view: oee {
   }
   measure: pressure_warnings_latest_shift {
     type: count
-    filters: [tag_name:"Pressure", value: ">70 OR <60", latest_shift_check: "yes"]
+    filters: [tag_name:"Pressure", value: ">70 OR <55", latest_shift_check: "yes"]
   }
   measure: pressure_warnings_last_5_mins {
     type: count
-    filters: [tag_name:"Pressure", value: ">70 OR <60", minutes_max_timestamp_diff:  "<=5"]
+    filters: [tag_name:"Pressure", value: ">70 OR <55", minutes_max_timestamp_diff:  "<=5"]
   }
   measure: pressure_warnings {
     type: count
-    filters: [tag_name:"Pressure", value: ">70 OR <60"]
+    filters: [tag_name:"Pressure", value: ">70 OR <55"]
   }
   measure: speed_warnings_latest_shift {
     type: count
-    filters: [tag_name:"Speed", value: ">105 OR <95", latest_shift_check: "yes"]
+    filters: [tag_name:"Speed", value: ">105 OR <0", latest_shift_check: "yes"]
   }
   measure: speed_warnings_last_5_mins  {
     type: count
-    filters: [tag_name:"Speed", value: ">105 OR <95", minutes_max_timestamp_diff: "<=5"]
+    filters: [tag_name:"Speed", value: ">100 OR <0", minutes_max_timestamp_diff: "<=5"]
   }
   measure: temperature_warnings_latest_shift {
     type: count
-    filters: [tag_name:"Speed", value: ">20 OR <15", latest_shift_check: "yes"]
+    filters: [tag_name:"Temperature", value: ">25 OR <15", latest_shift_check: "yes"]
   }
   measure: total_warnings_latest_shift {
     type: number

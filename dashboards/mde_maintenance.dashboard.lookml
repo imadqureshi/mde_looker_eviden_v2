@@ -1,5 +1,5 @@
 - dashboard: mde_maintenance
-  refresh: 10 seconds
+  --refresh: 10 seconds
   title: MDE - Maintenance Dashboard
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -150,7 +150,7 @@
       oee.percentOfMax, oee.maxRuntimeBeforeMaintenance, oee.state, oee.isFaulted,
       oee.isRunning, oee.state_value, oee.event_timestamp_time]
     filters:
-      oee.event_timestamp_time: 2023/08/24 08:04 to 2023/08/24 08:20
+      oee.minutes_max_timestamp_diff: "<=10"
       oee.isFaulted: ''
       oee.isRunning: ''
     sorts: [oee.event_timestamp_time]

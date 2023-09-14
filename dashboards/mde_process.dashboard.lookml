@@ -1,5 +1,5 @@
 - dashboard: mde_process
-  refresh: 10 seconds
+  --refresh: 10 seconds
   #All metrics have a NOT NULL filter to avoid ups and downs when there is no data sent at a particular second
   title: MDE - Process Dashboard
   layout: newspaper
@@ -55,9 +55,9 @@
     hidden_series: []
     reference_lines: [{reference_type: line, range_start: max, range_end: min, margin_top: deviation,
         margin_value: mean, margin_bottom: deviation, label_position: right, color: "#FC2E31",
-        line_value: '10.5', label: Max current range}, {reference_type: line, range_start: max,
+        line_value: '11', label: Max current range}, {reference_type: line, range_start: max,
         range_end: min, margin_top: deviation, margin_value: mean, margin_bottom: deviation,
-        label_position: right, color: "#FC9200", label: Min current range, line_value: '9.5'}]
+        label_position: right, color: "#FC9200", label: Min current range, line_value: '9'}]
     ordering: none
     show_null_labels: false
     show_totals_labels: false
@@ -122,7 +122,7 @@
         margin_value: mean, margin_bottom: deviation, label_position: right, color: "#FC2E31",
         line_value: '70', label: Max pressure range}, {reference_type: line, range_start: max,
         range_end: min, margin_top: deviation, margin_value: mean, margin_bottom: deviation,
-        label_position: right, color: "#FC9200", line_value: '60', label: Min pressure
+        label_position: right, color: "#FC9200", line_value: '55', label: Min pressure
           range}]
     ordering: none
     show_null_labels: false
@@ -191,10 +191,7 @@
     reference_lines: [{reference_type: line, range_start: max, range_end: min, margin_top: deviation,
       margin_value: mean, margin_bottom: deviation, label_position: right, color: "#FC2E31",
       line_value: '105', label: Max speed range, __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml,
-      __LINE_NUM: 189}, {reference_type: line, range_start: max, range_end: min, margin_top: deviation,
-      margin_value: mean, margin_bottom: deviation, label_position: right, color: "#FC9200",
-      line_value: '95', label: Min speed range, __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml,
-      __LINE_NUM: 191}]
+      __LINE_NUM: 189}]
     ordering: none
     show_null_labels: false
     show_totals_labels: false
@@ -320,7 +317,7 @@
       {axisId: oee.speed, id: oee.speed, name: Speed, __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml,
       __LINE_NUM: 315}, {axisId: oee.temperature, id: oee.temperature, name: Temperature,
       __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml, __LINE_NUM: 315}],
-    showLabels: true, showValues: true, minValue: !!null '', unpinAxis: false, tickDensity: default,
+    showLabels: true, showValues: true, minValue: !!null '', maxValue: 30, unpinAxis: false, tickDensity: default,
     tickDensityCustom: 5, type: linear, __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml,
     __LINE_NUM: 313}]
     x_axis_zoom: true
@@ -332,7 +329,7 @@
     hidden_series: []
     reference_lines: [{reference_type: line, range_start: max, range_end: min, margin_top: deviation,
       margin_value: mean, margin_bottom: deviation, label_position: right, color: "#FC2E31",
-      line_value: '20', label: Max temperature range, __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml,
+      line_value: '25', label: Max temperature range, __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml,
       __LINE_NUM: 326}, {reference_type: line, range_start: max, range_end: min, margin_top: deviation,
       margin_value: mean, margin_bottom: deviation, label_position: right, color: "#FC9200",
       line_value: '15', label: Min temperature range, __FILE: mde_analytics_custom/dashboards/mde_process.dashboard.lookml,
@@ -505,7 +502,7 @@
         margin_value: mean, margin_bottom: deviation, label_position: right, color: "#FC2E31",
         line_value: '70', label: Max pressure range}, {reference_type: line, range_start: max,
         range_end: min, margin_top: deviation, margin_value: mean, margin_bottom: deviation,
-        label_position: right, color: "#FC9200", line_value: '60', label: Min pressure
+        label_position: right, color: "#FC9200", line_value: '55', label: Min pressure
           range}]
     defaults_version: 1
     hidden_pivots: {}
@@ -563,7 +560,7 @@
             name: Current}, {axisId: oee.pressure, id: oee.pressure, name: Pressure},
           {axisId: oee.speed, id: oee.speed, name: Speed}, {axisId: oee.temperature,
             id: oee.temperature, name: Temperature}], showLabels: true, showValues: true,
-        minValue: !!null '', unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
+        minValue: !!null '', maxValue: 30, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
         type: linear}]
     x_axis_zoom: true
     y_axis_zoom: true
@@ -574,7 +571,7 @@
     hidden_series: []
     reference_lines: [{reference_type: line, range_start: max, range_end: min, margin_top: deviation,
         margin_value: mean, margin_bottom: deviation, label_position: right, color: "#FC2E31",
-        line_value: '20', label: Max temperature range}, {reference_type: line, range_start: max,
+        line_value: '25', label: Max temperature range}, {reference_type: line, range_start: max,
         range_end: min, margin_top: deviation, margin_value: mean, margin_bottom: deviation,
         label_position: right, color: "#FC9200", line_value: '15', label: Min temperature
           range}]
@@ -642,10 +639,7 @@
     hidden_series: []
     reference_lines: [{reference_type: line, range_start: max, range_end: min, margin_top: deviation,
         margin_value: mean, margin_bottom: deviation, label_position: right, color: "#FC2E31",
-        line_value: '105', label: Max speed range}, {reference_type: line, range_start: max,
-        range_end: min, margin_top: deviation, margin_value: mean, margin_bottom: deviation,
-        label_position: right, color: "#FC9200", line_value: '95', label: Min speed
-          range}]
+        line_value: '105', label: Max speed range}]
     defaults_version: 1
     hidden_pivots: {}
     listen:

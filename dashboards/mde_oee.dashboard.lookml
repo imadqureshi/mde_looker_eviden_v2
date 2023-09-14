@@ -1,5 +1,5 @@
 - dashboard: mde_oee
-  refresh: 10 seconds
+  --refresh: 10 seconds
   title: MDE - OEE Dashboard
   layout: newspaper
   preferred_viewer: dashboards-next

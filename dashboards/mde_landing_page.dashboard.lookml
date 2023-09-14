@@ -1,5 +1,5 @@
 - dashboard: mde_landing_page
-  --refresh: 15 seconds
+  --refresh: 10 seconds
   title: Factory of the Future - Landing Page
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -535,6 +535,8 @@
     explore: oee
     type: single_value
     fields: [oee.anomaly_count]
+    filters:
+      oee.latest_shift_check: 'Yes'
     sorts: [oee.anomaly_count desc 0]
     limit: 500
     column_limit: 50
@@ -906,6 +908,7 @@
     fields: [oee.anomaly_count]
     filters:
       oee.asset: Inspection Robot 001,Inspection Robot 002,Inspection Robot 003
+      oee.latest_shift_check: 'Yes'
     sorts: [oee.anomaly_count desc 0]
     limit: 500
     column_limit: 50

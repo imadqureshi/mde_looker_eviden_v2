@@ -15,14 +15,14 @@ view: maintenance {
     JSON_EXTRACT_SCALAR(embedded_metadata, '$.metadata.name') AS name ,
     JSON_EXTRACT_SCALAR(JSON_EXTRACT(embedded_metadata, '$.metadata'), '$.asset') AS asset ,
     JSON_EXTRACT_SCALAR(JSON_EXTRACT(embedded_metadata, '$.metadata'), '$.site') AS site ,
-    JSON_EXTRACT_SCALAR(JSON_EXTRACT(embedded_metadata, '$.metadata'), '$.shift') AS shift,
+    LEFT(JSON_EXTRACT_SCALAR(JSON_EXTRACT(embedded_metadata, '$.metadata'), '$.shift'),1) AS shift,
     JSON_EXTRACT_SCALAR(embedded_metadata, '$.anomaly') as anomaly,
     JSON_EXTRACT_SCALAR(embedded_metadata, '$.movingAverage') as partsSize,
     CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.maxRuntimeBeforeMaintenance') AS NUMERIC) AS maxRuntimeBeforeMaintenance,
     CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.percentOfMax') AS NUMERIC) AS percentOfMax,
     CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.runtimeSinceLastMaintenance') AS NUMERIC) AS runtimeSinceLastMaintenance,
     CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.secondsUntilNextMaintenance') AS NUMERIC) AS secondsUntilNextMaintenance,
-    FROM `mde-factory-of-future.mde_data.default-numeric-records` WHERE TIMESTAMP_TRUNC(event_timestamp, DAY) > TIMESTAMP("2023-08-20")
+    FROM `mde-factory-of-future.mde_data.default-numeric-records` WHERE TIMESTAMP_TRUNC(event_timestamp, DAY) > TIMESTAMP("2023-09-10")
     ORDER BY tag_name, event_timestamp ),
     base as (
     SELECT
@@ -34,7 +34,7 @@ view: maintenance {
         AVG(CASE WHEN (( oee.tag_name ) = 'isFaulted') THEN oee.value  ELSE NULL END) AS oee_isfaulted_1,
        -- MIN(CASE WHEN (( oee.tag_name ) = 'State') THEN oee.value  ELSE NULL END) AS oee_state_value
     FROM oee
-    WHERE ((( oee.event_timestamp ) >= (TIMESTAMP('2023-08-21 08:04:00', 'America/Chicago')) AND ( oee.event_timestamp ) < (TIMESTAMP('2023-08-24 8:20:00', 'America/Chicago'))))
+    WHERE ((( oee.event_timestamp ) >= (TIMESTAMP('2023-09-11 08:04:00', 'America/Chicago')) AND ( oee.event_timestamp ) < (TIMESTAMP('2023-09-15 8:20:00', 'America/Chicago'))))
     --AND (oee.asset) in('Inspection Robot 001')
     GROUP BY
         1,
