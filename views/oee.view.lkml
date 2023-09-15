@@ -23,7 +23,7 @@ view: oee {
       CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.percentOfMax') AS NUMERIC) AS percentOfMax,
       CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.runtimeSinceLastMaintenance') AS NUMERIC) AS runtimeSinceLastMaintenance,
       CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.secondsUntilNextMaintenance') AS NUMERIC) AS secondsUntilNextMaintenance,
-      FROM `mde-factory-of-future.mde_data.default-numeric-records`
+      FROM `ageless-span-396219.mde_data.default-numeric-records`
       WHERE TIMESTAMP_TRUNC(event_timestamp, DAY) > TIMESTAMP_TRUNC(TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL -3 DAY),DAY)
       ORDER BY tag_name, event_timestamp ;;
   }
@@ -223,7 +223,7 @@ view: oee {
   dimension: logo {
     type: string
     #sql: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTybIjoaFgW2he3DDzCoGMuvJcLh5D_YfZbJfnFOnP_ibE9P995xF-DB4718iuOqkShP94&usqp=CAU" ;;
-    sql: "https://storage.cloud.google.com/mde-factory-future-looker-bucket/anomaly_visual_inspection.jpg" ;;
+    sql: "https://storage.cloud.google.com/mde-factory-future-looker-bucketv2/anomaly_visual_inspection.jpg" ;;
     html:<img src = {{rendered_value}} height="150" width="150">;;
   }
 

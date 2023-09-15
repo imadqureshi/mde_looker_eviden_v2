@@ -21,7 +21,7 @@ CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.maxRuntimeBeforeMaintenance') AS 
 CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.percentOfMax') AS NUMERIC) AS percentOfMax,
 CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.runtimeSinceLastMaintenance') AS NUMERIC) AS runtimeSinceLastMaintenance,
 CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.secondsUntilNextMaintenance') AS NUMERIC) AS secondsUntilNextMaintenance,
-FROM `mde-factory-of-future.mde_data.default-numeric-records`
+FROM `ageless-span-396219.mde_data.default-numeric-records`
 WHERE TIMESTAMP_TRUNC(event_timestamp, DAY) > TIMESTAMP_TRUNC(TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL -3 DAY),DAY)
 AND tag_name IN ("OEE", "Uptime", "TotalPartsMade", "DesignedCycleTime", "Performance", "TotalTime" ,"BadPartsMade", "Availability", "Quality", "CycleTime_Base", "State", "MaintenanceData")
 ORDER BY tag_name, event_timestamp),

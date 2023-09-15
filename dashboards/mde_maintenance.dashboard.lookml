@@ -10,7 +10,7 @@
     name: Operability until next maintenance
     model: mde_analytics
     explore: oee
-    type: marketplace_viz_radial_gauge::radial_gauge-marketplace
+    type: mde_custom_viz::radial_gauge-marketplace
     fields: [oee_overview.percentOfMax, oee_overview.oee_target]
     limit: 500
     column_limit: 50

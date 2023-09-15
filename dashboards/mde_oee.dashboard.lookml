@@ -10,7 +10,7 @@
     name: OEE
     model: mde_analytics
     explore: oee
-    type: marketplace_viz_radial_gauge::radial_gauge-marketplace
+    type: mde_custom_viz::radial_gauge-marketplace
     fields: [oee_overview.oee_calc, oee_overview.oee_target]
     limit: 500
     column_limit: 50
@@ -87,7 +87,7 @@
     name: Performance
     model: mde_analytics
     explore: oee
-    type: marketplace_viz_radial_gauge::radial_gauge-marketplace
+    type: mde_custom_viz::radial_gauge-marketplace
     fields: [oee_overview.performance_calc, oee_overview.oee_target]
     limit: 500
     column_limit: 50
@@ -153,7 +153,7 @@
     name: Quality
     model: mde_analytics
     explore: oee
-    type: marketplace_viz_radial_gauge::radial_gauge-marketplace
+    type: mde_custom_viz::radial_gauge-marketplace
     fields: [oee_overview.quality_calc, oee_overview.oee_target]
     limit: 500
     column_limit: 50
@@ -219,7 +219,7 @@
     name: Availability
     model: mde_analytics
     explore: oee
-    type: marketplace_viz_radial_gauge::radial_gauge-marketplace
+    type: mde_custom_viz::radial_gauge-marketplace
     fields: [oee_overview.availability_calc, oee_overview.oee_target]
     limit: 500
     column_limit: 50
