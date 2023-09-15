@@ -1,5 +1,5 @@
 - dashboard: mde_oee
-  --refresh: 5 seconds
+  refresh: 10 seconds
   title: MDE - OEE Dashboard
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -9,7 +9,7 @@
   - title: OEE
     name: OEE
     model: mde_analytics
-    explore: oee_overview
+    explore: oee
     type: marketplace_viz_radial_gauge::radial_gauge-marketplace
     fields: [oee_overview.oee_calc, oee_overview.oee_target]
     limit: 500
@@ -65,9 +65,9 @@
     show_value_labels: true
     font_size: 12
     listen:
-      Site: oee_overview.site
-      Asset: oee_overview.asset
-      Line: oee_overview.line
+      Site: oee.site
+      Asset: oee.asset
+      Line: oee.line
     row: 2
     col: 0
     width: 6
@@ -86,7 +86,7 @@
   - title: Performance
     name: Performance
     model: mde_analytics
-    explore: oee_overview
+    explore: oee
     type: marketplace_viz_radial_gauge::radial_gauge-marketplace
     fields: [oee_overview.performance_calc, oee_overview.oee_target]
     limit: 500
@@ -142,9 +142,9 @@
     show_value_labels: true
     font_size: 12
     listen:
-      Site: oee_overview.site
-      Asset: oee_overview.asset
-      Line: oee_overview.line
+      Site: oee.site
+      Asset: oee.asset
+      Line: oee.line
     row: 2
     col: 12
     width: 6
@@ -152,7 +152,7 @@
   - title: Quality
     name: Quality
     model: mde_analytics
-    explore: oee_overview
+    explore: oee
     type: marketplace_viz_radial_gauge::radial_gauge-marketplace
     fields: [oee_overview.quality_calc, oee_overview.oee_target]
     limit: 500
@@ -208,9 +208,9 @@
     show_value_labels: true
     font_size: 12
     listen:
-      Site: oee_overview.site
-      Asset: oee_overview.asset
-      Line: oee_overview.line
+      Site: oee.site
+      Asset: oee.asset
+      Line: oee.line
     row: 2
     col: 18
     width: 6
@@ -218,7 +218,7 @@
   - title: Availability
     name: Availability
     model: mde_analytics
-    explore: oee_overview
+    explore: oee
     type: marketplace_viz_radial_gauge::radial_gauge-marketplace
     fields: [oee_overview.availability_calc, oee_overview.oee_target]
     limit: 500
@@ -274,9 +274,9 @@
     show_value_labels: true
     font_size: 12
     listen:
-      Site: oee_overview.site
-      Asset: oee_overview.asset
-      Line: oee_overview.line
+      Site: oee.site
+      Asset: oee.asset
+      Line: oee.line
     row: 2
     col: 6
     width: 6
@@ -290,7 +290,7 @@
     fill_fields: [oee.event_timestamp_hour]
     filters:
       oee.tag_name: ''
-      oee.event_timestamp_time: 2023-08-24 08:00:00 for 8 hours
+      oee.hours_max_timestamp_diff: "<=8"
     sorts: [oee.event_timestamp_hour desc]
     limit: 500
     column_limit: 50
@@ -343,10 +343,12 @@
   - title: Total Parts Made KPI tile
     name: Total Parts Made KPI tile
     model: mde_analytics
-    explore: oee_overview
+    explore: oee
     type: single_value
-    fields: [oee_overview.total_parts_made]
-    sorts: [oee_overview.total_parts_made desc 0]
+    fields: [oee.total_parts_made]
+    filters:
+      oee.latest_shift_check: 'Yes'
+    sorts: [oee.total_parts_made desc 0]
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -390,8 +392,8 @@
     note_display: above
     note_text: Total Parts Made This Shift
     listen:
-      Asset: oee_overview.asset
-      Line: oee_overview.line
+      Asset: oee.asset
+      Line: oee.line
     row: 16
     col: 10
     width: 4
@@ -399,10 +401,12 @@
   - title: Uptime KPI Tile
     name: Uptime KPI Tile
     model: mde_analytics
-    explore: oee_overview
+    explore: oee
     type: single_value
-    fields: [oee_overview.uptime]
-    sorts: [oee_overview.uptime desc 0]
+    fields: [oee.uptime]
+    sorts: [oee.uptime desc 0]
+    filters:
+      oee.latest_shift_check: 'Yes'
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -447,8 +451,8 @@
     note_display: above
     note_text: Uptime This Shift (hrs)
     listen:
-      Asset: oee_overview.asset
-      Line: oee_overview.line
+      Asset: oee.asset
+      Line: oee.line
     row: 16
     col: 6
     width: 4
@@ -456,10 +460,12 @@
   - title: Bad Parts Made KPI tile
     name: Bad Parts Made KPI tile
     model: mde_analytics
-    explore: oee_overview
+    explore: oee
     type: single_value
-    fields: [oee_overview.bad_parts_made]
-    sorts: [oee_overview.bad_parts_made desc 0]
+    fields: [oee.bad_parts_made]
+    filters:
+      oee.latest_shift_check: 'Yes'
+    sorts: [oee.bad_parts_made desc 0]
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -504,8 +510,8 @@
     note_display: above
     note_text: Bad Parts Made This Shift
     listen:
-      Asset: oee_overview.asset
-      Line: oee_overview.line
+      Asset: oee.asset
+      Line: oee.line
     row: 16
     col: 14
     width: 4
@@ -513,7 +519,7 @@
   - title: Machine State KPI tile
     name: Machine State KPI tile
     model: mde_analytics
-    explore: oee_overview
+    explore: oee
     type: single_value
     fields: [oee_overview.state]
     limit: 500
@@ -534,9 +540,9 @@
     note_display: above
     note_text: Machine State
     listen:
-      Site: oee_overview.site
-      Asset: oee_overview.asset
-      Line: oee_overview.line
+      Site: oee.site
+      Asset: oee.asset
+      Line: oee.line
     row: 16
     col: 0
     width: 6
@@ -549,6 +555,7 @@
     fields: [oee.state_value, oee.event_timestamp_time]
     filters:
       oee.minutes_max_timestamp_diff: "<=60"
+      oee.state_value: NOT NULL #Removing nulls from state trend 09/13/23
     sorts: [oee.event_timestamp_time desc]
     limit: 5000
     column_limit: 50
@@ -593,9 +600,11 @@
   - title: Average Cycle Time KPI tile
     name: Average Cycle Time KPI tile
     model: mde_analytics
-    explore: oee_overview
+    explore: oee
     type: single_value
-    fields: [oee_overview.cycle_time_per_part]
+    fields: [oee.cycle_time_per_part]
+    filters:
+      oee.latest_shift_check: 'Yes'
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -614,9 +623,9 @@
     note_display: above
     note_text: Average Cycle Time This Shift (s/part)
     listen:
-      Site: oee_overview.site
-      Asset: oee_overview.asset
-      Line: oee_overview.line
+      Site: oee.site
+      Asset: oee.asset
+      Line: oee.line
     row: 16
     col: 18
     width: 6
@@ -808,8 +817,6 @@
       oee.tag_name: ''
       oee.hours_max_timestamp_diff: "<=24"
       oee.shift: "-NULL"
-      oee.line: Line 1
-      oee.asset: Assembly Robot 001
     sorts: [min_of_seconds_max_timestamp_diff desc]
     limit: 500
     column_limit: 50
@@ -999,9 +1006,9 @@
       type: dropdown_menu
       display: inline
     model: mde_analytics
-    explore: oee_overview
+    explore: oee
     listens_to_filters: []
-    field: oee_overview.site
+    field: oee.site
   - name: Line
     title: Line
     type: field_filter

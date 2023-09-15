@@ -15,17 +15,18 @@ JSON_EXTRACT_SCALAR(embedded_metadata, '$.metadata.maintenance') AS maintenance 
 JSON_EXTRACT_SCALAR(embedded_metadata, '$.metadata.name') AS name ,
 JSON_EXTRACT_SCALAR(JSON_EXTRACT(embedded_metadata, '$.metadata'), '$.asset') AS asset ,
 JSON_EXTRACT_SCALAR(JSON_EXTRACT(embedded_metadata, '$.metadata'), '$.site') AS site ,
-JSON_EXTRACT_SCALAR(JSON_EXTRACT(embedded_metadata, '$.metadata'), '$.shift') AS shift,
+LEFT(JSON_EXTRACT_SCALAR(JSON_EXTRACT(embedded_metadata, '$.metadata'), '$.shift'),1) AS shift,
 JSON_EXTRACT_SCALAR(JSON_EXTRACT(embedded_metadata, '$.metadata'), '$.area') AS area ,
 CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.maxRuntimeBeforeMaintenance') AS NUMERIC) AS maxRuntimeBeforeMaintenance,
 CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.percentOfMax') AS NUMERIC) AS percentOfMax,
 CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.runtimeSinceLastMaintenance') AS NUMERIC) AS runtimeSinceLastMaintenance,
 CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.secondsUntilNextMaintenance') AS NUMERIC) AS secondsUntilNextMaintenance,
-FROM `mde-factory-of-future.mde_data.default-numeric-records` WHERE TIMESTAMP_TRUNC(event_timestamp, DAY) > TIMESTAMP("2023-08-24")
+FROM `mde-factory-of-future.mde_data.default-numeric-records`
+WHERE TIMESTAMP_TRUNC(event_timestamp, DAY) > TIMESTAMP_TRUNC(TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL -3 DAY),DAY)
 AND tag_name IN ("OEE", "Uptime", "TotalPartsMade", "DesignedCycleTime", "Performance", "TotalTime" ,"BadPartsMade", "Availability", "Quality", "CycleTime_Base", "State", "MaintenanceData")
 ORDER BY tag_name, event_timestamp),
 row_nums as (
-SELECT *,  ROW_NUMBER() OVER (PARTITION BY base.deviceID, tag_name ORDER BY event_timestamp DESC) as row_num,
+SELECT *,  ROW_NUMBER() OVER (PARTITION BY base.asset, tag_name ORDER BY event_timestamp DESC) as row_num,
 if (base.percentOfMax >85, 1, 0) as asset_up_for_maintenance
 FROM base
 )
@@ -132,9 +133,13 @@ where row_nums.row_num=1 ;;
   }
   measure: oee_calc {
     label: "OEE"
-    type: number
-    sql: ${performance_calc} * ${availability_calc} * ${quality_calc} ;;
+    type: average
+    sql: ${TABLE}.value/100 ;;
+    filters: [tag_name: "OEE"]
     value_format_name: percent_1
+    # type: number
+    # sql: ${performance_calc} * ${availability_calc} * ${quality_calc} ;;
+    # value_format_name: percent_1
   }
   measure: oee_calc_kpi {
     sql: ${oee_calc} ;;
@@ -163,23 +168,35 @@ where row_nums.row_num=1 ;;
   }
   measure: performance_calc {
     label: "Performance"
-    type: number
-    sql: ${designed_cycle_time}*${total_parts_made}/${uptime} ;;
+    type: average
+    sql: ${TABLE}.value/100 ;;
+    filters: [tag_name: "Performance"]
     value_format_name: percent_1
+    #Updating to tag_name reference, not using calc anymore - 09/13/23
   }
 
   measure: availability_calc {
     label: "Availability"
-    type: number
-    sql: ${uptime}/${total_time} ;;
+    type: average
+    sql: ${TABLE}.value/100 ;;
+    filters: [tag_name: "Availability"]
     value_format_name: percent_1
+    # type: number
+    # sql: ${uptime}/${total_time} ;;
+    # value_format_name: percent_1
+    #Updating to tag_name reference, not using calc anymore - 09/13/23
   }
 
   measure: quality_calc {
     label: "Quality"
-    type: number
-    sql: (${total_parts_made}-${bad_parts_made})/${total_parts_made} ;;
+    type: average
+    sql: ${TABLE}.value/100 ;;
+    filters: [tag_name: "Quality"]
     value_format_name: percent_1
+    #Updating to tag_name reference, not using calc anymore - 09/13/23
+    # type: number
+    # sql: (${total_parts_made}-${bad_parts_made})/${total_parts_made} ;;
+    # value_format_name: percent_1
   }
   measure: designed_cycle_time {
     type: average
@@ -255,12 +272,12 @@ where row_nums.row_num=1 ;;
   }
   measure: runtime_since_last_maintenance {
     type: average
-    sql: ${TABLE}.runtimeSinceLastMaintenance /86400;;
+    sql: ${TABLE}.runtimeSinceLastMaintenance /60;;
     value_format_name: decimal_1
   }
   measure: runtime_until_next_maintenance {
     type: average
-    sql: ${TABLE}.secondsUntilNextMaintenance /86400 ;;
+    sql: ${TABLE}.secondsUntilNextMaintenance /60 ;;
     value_format_name: decimal_1
     html:
     {% if percentOfMax._value<0.80 %}
@@ -418,6 +435,56 @@ where row_nums.row_num=1 ;;
     # html: <p style ="color:orange"> {{rendered_value}} </p> ;;
   }
 
+  measure: tbl_img_5_axis_cnc_fp{
+    sql:CONCAT("5-axis CNC 2","||",${oee_calc}*100) ;;
+    html:
+     <table style="width:100%; ">
+     <tr style="margin-top: 0; padding-top:0;line-height: 20px;height: 20px">
+    <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "||" |slice: 0}}</td>
+    </tr>
+    <tr>
+    <td><img src = "https://storage.cloud.google.com/@{bucket_name}/@{cnc_img_name}" style="height:100px; width:125px"  ></td>
+    </tr>
+    <tr>
+    <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "||" |slice: 1}}</td>
+    </tr>
+    </table>
 
+    ;;
+  }
+  measure: tbl_img_robotic_arm1_fp {
+    sql:CONCAT("Assembly Robot 001","||", ${oee_calc}*100) ;;
+    html:
+      <table style="width:100%; ">
+     <tr style="margin-top: 0; padding-top:0;line-height: 20px;height: 20px">
+    <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "||" |slice: 0}}</td>
+    </tr>
+    <tr>
+    <td><img src = "https://storage.cloud.google.com/@{bucket_name}/@{assembly_robot_img_name}" style="height:100px; width:125px"  ></td>
+    </tr>
+    <tr>
+    <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "||" |slice: 1}}</td>
+    </tr>
+    </table>
+    ;;
+  }
+  measure: tbl_img_robotic_arm2_fp {
+    sql:CONCAT("Assembly Robot 002","||", ${mtbf}) ;;
+    html:
+    <a href="/dashboards/mde_analytics::mde_oee?Site=Chicago&Line=Line+1&Asset=Assembly+Robot+001" style="text-decoration:underline" title="Click here to go to the OEE Detail Dashboard" target="_blank">
+      <table style="width:100%; ">
+     <tr style="margin-top: 0; padding-top:0;line-height: 20px;height: 20px">
+    <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "||" |slice: 0}}</td>
+    </tr>
+    <tr>
+    <td><img src = "https://storage.cloud.google.com/@{bucket_name}/@{assembly_robot_img_name}" style="height:100px; width:125px"  ></td>
+    </tr>
+    <tr>
+    <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "||" |slice: 1}}</td>
+    </tr>
+    </table>
+    </a>
+    ;;
+  }
 
 }
