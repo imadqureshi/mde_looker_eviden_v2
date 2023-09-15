@@ -1,5 +1,5 @@
 - dashboard: mde_process
-  #refresh: 10 seconds
+  refresh: 10 seconds
   #All metrics have a NOT NULL filter to avoid ups and downs when there is no data sent at a particular second
   title: MDE - Process Dashboard
   layout: newspaper

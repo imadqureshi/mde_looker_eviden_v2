@@ -1,5 +1,5 @@
 - dashboard: mde_landing_page
-  #refresh: 10 seconds
+  refresh: 10 seconds
   title: Factory of the Future - Landing Page
   layout: newspaper
   preferred_viewer: dashboards-next
