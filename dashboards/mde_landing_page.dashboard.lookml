@@ -1,5 +1,5 @@
 - dashboard: mde_landing_page
-  --refresh: 10 seconds
+  #refresh: 10 seconds
   title: Factory of the Future - Landing Page
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -1489,8 +1489,7 @@
     model: mde_analytics
     explore: oee_overview
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [oee_overview.assets_up_for_maintenance, maintenance.mean_time_between_failures,
-      maintenance.average_unplanned_downtime]
+    fields: [oee_overview.assets_up_for_maintenance, maintenance.machine_health]
     filters:
       maintenance.asset: Assembly Robot 001,Assembly Robot 002
     limit: 500
@@ -1552,8 +1551,7 @@
     model: mde_analytics
     explore: oee_overview
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [oee_overview.assets_up_for_maintenance, maintenance.mean_time_between_failures,
-      maintenance.average_unplanned_downtime]
+    fields: [oee_overview.assets_up_for_maintenance, maintenance.machine_health]
     filters:
       maintenance.asset: Material Handling Robot 001,Material Handling Robot 002
     limit: 500
@@ -1615,8 +1613,7 @@
     model: mde_analytics
     explore: oee_overview
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [oee_overview.assets_up_for_maintenance, maintenance.mean_time_between_failures,
-      maintenance.average_unplanned_downtime]
+    fields: [oee_overview.assets_up_for_maintenance, maintenance.machine_health]
     filters:
       maintenance.asset: HAAS Mini Mill 001,HAAS Mini Mill 002
     limit: 500
@@ -1678,8 +1675,7 @@
     model: mde_analytics
     explore: oee_overview
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [oee_overview.assets_up_for_maintenance, maintenance.mean_time_between_failures,
-      maintenance.average_unplanned_downtime]
+    fields: [oee_overview.assets_up_for_maintenance, maintenance.machine_health]
     filters:
       maintenance.asset: HAAS 5-Axis CNC 001,HAAS 5-Axis CNC 002
     limit: 500

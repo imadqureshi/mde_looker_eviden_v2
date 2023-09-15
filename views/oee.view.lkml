@@ -23,8 +23,8 @@ view: oee {
       CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.percentOfMax') AS NUMERIC) AS percentOfMax,
       CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.runtimeSinceLastMaintenance') AS NUMERIC) AS runtimeSinceLastMaintenance,
       CAST(JSON_EXTRACT_SCALAR(embedded_metadata, '$.secondsUntilNextMaintenance') AS NUMERIC) AS secondsUntilNextMaintenance,
-      FROM `mde-factory-of-future.mde_data.default-numeric-records` WHERE TIMESTAMP_TRUNC(event_timestamp, DAY) > TIMESTAMP("2023-09-11")
-      -- TIMESTAMP_TRUNC(event_timestamp, DAY) in (select distinct TIMESTAMP_TRUNC(event_timestamp, DAY) as top3days from base order by top3days desc limit 3)
+      FROM `mde-factory-of-future.mde_data.default-numeric-records`
+      WHERE TIMESTAMP_TRUNC(event_timestamp, DAY) > TIMESTAMP_TRUNC(TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL -3 DAY),DAY)
       ORDER BY tag_name, event_timestamp ;;
   }
 

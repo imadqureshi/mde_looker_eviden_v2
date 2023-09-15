@@ -1,5 +1,5 @@
 - dashboard: mde_oee
-  --refresh: 10 seconds
+  #refresh: 10 seconds
   title: MDE - OEE Dashboard
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -817,8 +817,6 @@
       oee.tag_name: ''
       oee.hours_max_timestamp_diff: "<=24"
       oee.shift: "-NULL"
-      oee.line: Line 1
-      oee.asset: Assembly Robot 001
     sorts: [min_of_seconds_max_timestamp_diff desc]
     limit: 500
     column_limit: 50
