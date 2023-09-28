@@ -223,7 +223,7 @@ view: oee {
   dimension: logo {
     type: string
     #sql: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTybIjoaFgW2he3DDzCoGMuvJcLh5D_YfZbJfnFOnP_ibE9P995xF-DB4718iuOqkShP94&usqp=CAU" ;;
-    sql: "https://storage.cloud.google.com/mde-factory-future-looker-bucketv2/anomaly_visual_inspection.jpg" ;;
+    sql: "https://storage.cloud.google.com/mde-factory-future-looker-bucketv2/anomaly_visual_inspection.png" ;;
     html:<img src = {{rendered_value}} height="150" width="150">;;
   }
 
