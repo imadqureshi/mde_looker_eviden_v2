@@ -443,7 +443,7 @@ where row_nums.row_num=1 ;;
     <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "||" |slice: 0}}</td>
     </tr>
     <tr>
-    <td><img src = "https://storage.cloud.google.com/@{bucket_name}/@{cnc_img_name}" style="height:100px; width:125px"  ></td>
+    <td><img src = "https://storage.cloud.google.com/mde-factory-future-looker-bucketv2/landing_page_5axes_cnc.png" style="height:100px; width:125px"  ></td>
     </tr>
     <tr>
     <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "||" |slice: 1}}</td>
@@ -460,7 +460,7 @@ where row_nums.row_num=1 ;;
     <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "||" |slice: 0}}</td>
     </tr>
     <tr>
-    <td><img src = "https://storage.cloud.google.com/@{bucket_name}/@{assembly_robot_img_name}" style="height:100px; width:125px"  ></td>
+    <td><img src = "https://storage.cloud.google.com/mde-factory-future-looker-bucketv2/landing_page_robot_arm.png" style="height:100px; width:125px"  ></td>
     </tr>
     <tr>
     <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "||" |slice: 1}}</td>
