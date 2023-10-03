@@ -301,7 +301,7 @@ where row_nums.row_num=1 ;;
     <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "," |slice: 0}}</td>
     </tr>
     <tr>
-    <td><img src = "https://storage.cloud.google.com/mde-factory-future-looker-bucketv2/landing_page_robot_arm.png" style="height:200px; width:250px"  ></td>
+    <td><img src = "https://storage.googleapis.com/public-demo-assets/mxd-looker/landing_page_robot_arm.png" style="height:200px; width:250px"  ></td>
     </tr>
     </table>
     ;;
@@ -315,7 +315,7 @@ where row_nums.row_num=1 ;;
     <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "," |slice: 0}}</td>
     </tr>
     <tr>
-    <td><img src = "https://storage.cloud.google.com/mde-factory-future-looker-bucketv2/landing_page_robot_arm.png" style="height:200px; width:250px"  ></td>
+    <td><img src = "https://storage.googleapis.com/public-demo-assets/mxd-looker/landing_page_robot_arm.png" style="height:200px; width:250px"  ></td>
     </tr>
     </table>
     ;;
@@ -328,7 +328,7 @@ where row_nums.row_num=1 ;;
     <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "," |slice: 0}}</td>
     </tr>
     <tr>
-    <td><img src = "https://storage.cloud.google.com/mde-factory-future-looker-bucketv2/landing_page_factory_floor.png" style="height:200px; width:250px"  ></td>
+    <td><img src = "https://storage.googleapis.com/public-demo-assets/mxd-looker/landing_page_factory_floor.png" style="height:200px; width:250px"  ></td>
     </tr>
     </table>
     ;;
@@ -341,7 +341,7 @@ where row_nums.row_num=1 ;;
     <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "," |slice: 0}}</td>
     </tr>
     <tr>
-    <td><img src = "https://storage.cloud.google.com/mde-factory-future-looker-bucketv2/landing_page_mini_mill.png" style="height:200px; width:250px"  ></td>
+    <td><img src = "https://storage.googleapis.com/public-demo-assets/mxd-looker/landing_page_mini_mill.png" style="height:200px; width:250px"  ></td>
     </tr>
     </table>
     ;;
@@ -354,7 +354,7 @@ where row_nums.row_num=1 ;;
     <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "," |slice: 0}}</td>
     </tr>
     <tr>
-    <td><img src = "https://storage.cloud.google.com/mde-factory-future-looker-bucketv2/landing_page_inspection_robot.png" style="height:200px; width:250px"  ></td>
+    <td><img src = "https://storage.googleapis.com/public-demo-assets/mxd-looker/landing_page_inspection_robot.png" style="height:200px; width:250px"  ></td>
     </tr>
     </table>
     ;;
@@ -367,7 +367,7 @@ where row_nums.row_num=1 ;;
     <td style="text-align:center; font-size:1.125rem; font-weight:400">{{rendered_value| split: "," |slice: 0}}</td>
     </tr>
     <tr>
-    <td><img src = "https://storage.cloud.google.com/mde-factory-future-looker-bucketv2/landing_page_5axes_cnc.png" style="height:200px; width:250px"  ></td>
+    <td><img src = "https://storage.googleapis.com/public-demo-assets/mxd-looker/landing_page_5axes_cnc.png" style="height:200px; width:250px"  ></td>
     </tr>
     </table>
     ;;
