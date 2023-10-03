@@ -2,7 +2,7 @@ view: max_timestamp {
   derived_table: {
     sql: SELECT
         MAX(event_timestamp) as max_timestamp
-        FROM `mde-factory-of-future.mde_data.default-numeric-records`
+        FROM `ageless-span-396219.mde_data.default-numeric-records`
         WHERE TIMESTAMP_TRUNC(event_timestamp, DAY) > TIMESTAMP_TRUNC(TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL -3 DAY),DAY);;
   }
 

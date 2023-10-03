@@ -1,10 +1,10 @@
-project_name: "mde_analytics_custom"
+project_name: "mde_looker_custom_v2"
 
 constant: looker_connection {
-  value: "mde-bq-mde-factory-of-future"
+  value: "mde-bq-ageless-span-396219"
 }
 constant: bucket_name {
-  value: "mde-factory-future-looker-bucket"
+  value: "mde-factory-future-looker-bucketv2"
 }
 constant: factory_floor_img_name {
   value: "landing_page_factory_floor.png"

@@ -257,7 +257,7 @@
     name: 'OEE Overview '
     model: mde_analytics
     explore: oee_overview
-    type: marketplace_viz_radial_gauge::radial_gauge-marketplace
+    type: mde_custom_viz::radial_gauge-marketplace
     fields: [oee_overview.oee_calc, oee_overview.oee_target]
     limit: 500
     column_limit: 50
@@ -321,7 +321,7 @@
     name: OEE Overview  (2)
     model: mde_analytics
     explore: oee_overview
-    type: marketplace_viz_radial_gauge::radial_gauge-marketplace
+    type: mde_custom_viz::radial_gauge-marketplace
     fields: [oee_overview.oee_calc, oee_overview.oee_target]
     filters:
       oee_overview.asset: Assembly Robot 001,Assembly Robot 002
@@ -586,7 +586,7 @@
     name: OEE Overview  (3)
     model: mde_analytics
     explore: oee_overview
-    type: marketplace_viz_radial_gauge::radial_gauge-marketplace
+    type: mde_custom_viz::radial_gauge-marketplace
     fields: [oee_overview.oee_calc, oee_overview.oee_target]
     filters:
       oee_overview.asset: HAAS Mini Mill 001,HAAS Mini Mill 002
@@ -656,7 +656,7 @@
     name: OEE Overview
     model: mde_analytics
     explore: oee_overview
-    type: marketplace_viz_radial_gauge::radial_gauge-marketplace
+    type: mde_custom_viz::radial_gauge-marketplace
     fields: [oee_overview.oee_calc, oee_overview.oee_target]
     filters:
       oee_overview.asset: Material Handling Robot 001,Material Handling Robot 002
@@ -722,7 +722,7 @@
     name: OEE Overview (2)
     model: mde_analytics
     explore: oee_overview
-    type: marketplace_viz_radial_gauge::radial_gauge-marketplace
+    type: mde_custom_viz::radial_gauge-marketplace
     fields: [oee_overview.oee_calc, oee_overview.oee_target]
     filters:
       oee_overview.asset: HAAS 5-Axis CNC 001,HAAS 5-Axis CNC 002
@@ -802,7 +802,7 @@
     name: OEE Overview  (4)
     model: mde_analytics
     explore: oee_overview
-    type: marketplace_viz_radial_gauge::radial_gauge-marketplace
+    type: mde_custom_viz::radial_gauge-marketplace
     fields: [oee_overview.oee_calc, oee_overview.oee_target]
     filters:
       oee_overview.asset: Inspection Robot 001,Inspection Robot 002,Inspection Robot
@@ -1045,7 +1045,7 @@
     name: Maintenance
     model: mde_analytics
     explore: oee_overview
-    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    type: mde_viz_multiple-value::multiple_value-marketplace
     fields: [oee_overview.assets_up_for_maintenance]
     filters:
       oee_overview.asset: ''
@@ -1415,7 +1415,7 @@
     name: Maintenance (2)
     model: mde_analytics
     explore: oee_overview
-    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    type: mde_viz_multiple-value::multiple_value-marketplace
     fields: [oee_overview.assets_up_for_maintenance]
     filters:
       oee_overview.asset: Inspection Robot 001,Inspection Robot 002,Inspection Robot
@@ -1488,7 +1488,7 @@
     name: Maintenance (3)
     model: mde_analytics
     explore: oee_overview
-    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    type: mde_viz_multiple-value::multiple_value-marketplace
     fields: [oee_overview.assets_up_for_maintenance, maintenance.machine_health]
     filters:
       maintenance.asset: Assembly Robot 001,Assembly Robot 002
@@ -1550,7 +1550,7 @@
     name: Maintenance (4)
     model: mde_analytics
     explore: oee_overview
-    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    type: mde_viz_multiple-value::multiple_value-marketplace
     fields: [oee_overview.assets_up_for_maintenance, maintenance.machine_health]
     filters:
       maintenance.asset: Material Handling Robot 001,Material Handling Robot 002
@@ -1612,7 +1612,7 @@
     name: Maintenance (5)
     model: mde_analytics
     explore: oee_overview
-    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    type: mde_viz_multiple-value::multiple_value-marketplace
     fields: [oee_overview.assets_up_for_maintenance, maintenance.machine_health]
     filters:
       maintenance.asset: HAAS Mini Mill 001,HAAS Mini Mill 002
@@ -1674,7 +1674,7 @@
     name: 'Maintenance '
     model: mde_analytics
     explore: oee_overview
-    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    type: mde_viz_multiple-value::multiple_value-marketplace
     fields: [oee_overview.assets_up_for_maintenance, maintenance.machine_health]
     filters:
       maintenance.asset: HAAS 5-Axis CNC 001,HAAS 5-Axis CNC 002
